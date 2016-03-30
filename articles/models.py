@@ -9,8 +9,17 @@ class Article(models.Model):
 	title = models.CharField(max_length=255, null=False, blank=False)
 	slug = models.SlugField(max_length=255, null=False, blank=False)
 	text = models.TextField(null=False, blank=False)
+	author = models.ForeignKey(User, null=False, related_name='authored_articles')
+	editor = models.ForeignKey(User, null=False, related_name='edited_articles')
+	publish_date = models.DateTimeField(null=True)
 	created = models.DateTimeField(auto_now_add =True, null=False)
 	modified = models.DateTimeField(auto_now=True, null=False)
+
+	class Meta:
+		ordering = ['-publish_date']
+
+	def __unicode__(self):
+		return self.title
 
 	def save(self):
 		if not self.slug:
