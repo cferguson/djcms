@@ -6,8 +6,9 @@ from django.template.defaultfilters import slugify
 
 
 class Article(models.Model):
-	title = models.CharField(max_length=255, null=False, blank=False)
+	title = models.CharField(max_length=100, null=False, blank=False)
 	slug = models.SlugField(max_length=255, null=False, blank=False)
+	teaser = models.CharField(max_length=255, null=False, blank=False)
 	text = models.TextField(null=False, blank=False)
 	author = models.ForeignKey(User, null=False, related_name='authored_articles')
 	editor = models.ForeignKey(User, null=False, related_name='edited_articles')
@@ -24,6 +25,9 @@ class Article(models.Model):
 	def save(self):
 		if not self.slug:
 			obj.slug = slugify(self.title)
+		if not self.teaser and self.text:
+			self.teaser = self.text[:255]
+
 		super(Article, self).save()
 
 

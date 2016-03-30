@@ -12,3 +12,6 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
 	model = models.Article
 	template_name = 'article/detail.html'
+	
+	query_pk_and_slug = True
+	slug_url_kwarg = 'slug'
