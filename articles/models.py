@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
 
@@ -20,3 +21,10 @@ class Article(models.Model):
 class ArticleView(models.Model):
 	article = models.ForeignKey(Article, null=False)
 	created = models.DateTimeField(auto_now_add =True, null=False)
+
+
+class Comment(models.Model):
+	article = models.ForeignKey(Article, null=False)
+	user = models.ForeignKey(User, null=False)
+	created = models.DateTimeField(auto_now_add =True, null=False)
+	modified = models.DateTimeField(auto_now=True, null=False)
