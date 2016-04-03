@@ -15,17 +15,14 @@
         {% bootstrap_messages %}
 
         <div class="container">
-            <div class="masthead">
-                <h3 class="text-muted"><a href="/">DJCMS</a></h3>
+            <div class="row" style="background-color: #d3d3d3">
                 {% include "header.html" %}  
             </div>
 
-            <div class="row">
-                {% block content %}
-                {% endblock %}
-            </div>
+            {% block content %}
+            {% endblock %}
             
-            <div class="footer">
+            <div class="row">
                 <br>
             </div>
 
