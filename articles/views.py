@@ -15,3 +15,9 @@ class DetailView(generic.DetailView):
 	
 	query_pk_and_slug = True
 	slug_url_kwarg = 'slug'
+
+	def get_context_data(self, **kwargs):
+		context = super(DetailView, self).get_context_data(**kwargs)
+		context['comments'] = models.Comment.objects.filter(article=self.get_object())
+
+		return context

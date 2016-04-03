@@ -50,5 +50,6 @@ class ArticleView(models.Model):
 class Comment(models.Model):
 	article = models.ForeignKey(Article, null=False)
 	user = models.ForeignKey(User, null=False)
+	text = models.CharField(max_length=255, null=False, blank=False)
 	created = models.DateTimeField(auto_now_add =True, null=False)
 	modified = models.DateTimeField(auto_now=True, null=False)
