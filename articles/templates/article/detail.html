@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{ article.title }}</h1>
-<div>{{ article.teaser }}</div>
-<div><br></div>
-<div>{{ article.text }}</div>
-<div><br></div>
+<h1 class="text-muted">{{ article.title }}</h1>
+<div class="row">{{ article.teaser }}</div>
+<div class="row"><br></div>
+<div class="row">{{ article.text|linebreaks }}</div>
+<div class="row"><br></div>
 {% endblock %}
