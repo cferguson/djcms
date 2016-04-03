@@ -2,6 +2,8 @@
 
 
 ## Gettings Started
+- Install node (https://nodejs.org/en/)
+- npm install -g grunt-cli
 - pip install -r requirements.txt
 - python manage.py migrate
 

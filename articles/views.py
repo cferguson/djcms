@@ -6,7 +6,7 @@ class IndexView(generic.ListView):
 	template_name = 'article/index.html'
 
 	def get_queryset(self):
-		return models.Article.objects.order_by('-id')[:5]
+		return models.Article.objects.order_by('-id')[:25]
 
 
 class DetailView(generic.DetailView):

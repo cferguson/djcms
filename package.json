@@ -1,0 +1,12 @@
+{
+  "name": "djcms",
+  "version": "0.0.0",
+  "description": "Django content management system",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "cferguson@personal.github.com:cferguson/djcms.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
