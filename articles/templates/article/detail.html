@@ -23,7 +23,10 @@
 <div class="row">
 	<ul>
 	{% for comment in comments %}
-		<li>comment.text</li>
+		<li>
+			<small>{{ comment.user }} on {{ comment.created|date:'M d, Y' }}</small>: 
+			{{ comment.text }}
+		</li>
 	{% endfor %}
 	</ul>
 </div>
