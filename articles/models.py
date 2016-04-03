@@ -5,11 +5,22 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
 
+class Channel(models.Model):
+	name = models.CharField(max_length=255, null=False, blank=False)
+	created_by = models.ForeignKey(User, null=False)
+	created = models.DateTimeField(auto_now_add =True, null=False)
+	modified = models.DateTimeField(auto_now=True, null=False)
+
+	def __unicode__(self):
+		return self.name
+
+
 class Article(models.Model):
 	title = models.CharField(max_length=100, null=False, blank=False)
 	slug = models.SlugField(max_length=255, null=False, blank=False)
 	teaser = models.CharField(max_length=255, null=False, blank=False)
 	text = models.TextField(null=False, blank=False)
+	channel = models.ForeignKey(Channel, null=True)
 	author = models.ForeignKey(User, null=False, related_name='authored_articles')
 	editor = models.ForeignKey(User, null=False, related_name='edited_articles')
 	publish_date = models.DateTimeField(null=True)
